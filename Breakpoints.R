@@ -63,7 +63,7 @@ BreakPointSort <- function(Vec){
       min_sestupny <- min(vec_perm[vec_ind == 0])           # vybere nejmensi sestupny prvek
       min_sestupny_idx <- which(vec_perm == min_sestupny)   # index nejmensiho prvku
       # otoceni sestupne casti od serazeni po min prvek
-      vec_perm <- c(vec_perm[1:index-1], rev(vec_perm[index:min_sestupny_idx]), vec_perm[min_sestupny_idx:length(vec_perm)])
+      vec_perm <- c(vec_perm[1:index-1], rev(vec_perm[index:min_sestupny_idx]), vec_perm[(min_sestupny_idx+1):length(vec_perm)])
     }
     index <- NajdiSetridene(vec_perm)               # pokolik to mame setridene
     #krok <- krok + 1                               # kolik kroku potrebujem k serazeni
@@ -72,6 +72,6 @@ BreakPointSort <- function(Vec){
   #print('Minimalni pocet kroku: ' + krok)
   return(vec)
 }
-  
+ 
   
   
