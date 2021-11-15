@@ -51,7 +51,7 @@ BreakPointSort <- function(Vec){
   
   vec_perm <- as.integer(c(0, Vec, max(Vec)+1))     # vektor permutaci, doplneni o okrajove hodnoty
   index <- NajdiSetridene(vec_perm)                 # pokolik to mame setridene
-  #krok <- c()
+  krok <- 0                                        # promenna k pocitani kroku pro serazeni
   
   while (index < length(vec_perm)){
     vec_ind <- Vzestupne(vec_perm)                  # vektor indikaci vzestupne 1, sestupne 0
@@ -66,10 +66,10 @@ BreakPointSort <- function(Vec){
       vec_perm <- c(vec_perm[1:index-1], rev(vec_perm[index:min_sestupny_idx]), vec_perm[(min_sestupny_idx+1):length(vec_perm)])
     }
     index <- NajdiSetridene(vec_perm)               # pokolik to mame setridene
-    #krok <- krok + 1                               # kolik kroku potrebujem k serazeni
+    krok <- krok + 1                               # kolik kroku potrebujem k serazeni
   }
   vec <- vec_perm[2:(length(vec_perm)-1)]           # odstraneni kotvicich prvku 
-  #print('Minimalni pocet kroku: ' + krok)
+  print(c('Minimalni pocet kroku:', krok))
   return(vec)
 }
  
